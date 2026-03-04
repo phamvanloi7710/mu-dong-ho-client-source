@@ -1,7 +1,7 @@
 #include "StdAfx.h"
 #include "PL/Shader/PL_RenderBMD.h"
 
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 #include "ZzzBMD.h"
 #include "ZzzTexture.h"
 #include "TextureScript.h"

@@ -1905,7 +1905,7 @@ void RenderBoids(bool bAfterCharacter)
 							Position[2] = RequestTerrainHeight(o->Position[0], o->Position[1]);
 							VectorCopy(Position, b->BodyOrigin);
 
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 							{
 								rRenderLayOut luniform(o);
 								b->RenderBodyShadow();
@@ -1958,7 +1958,7 @@ void RenderFishs()
 							VectorCopy(o->Position, Position);
 							Position[2] = RequestTerrainHeight(o->Position[0], o->Position[1]);
 							VectorCopy(Position, b->BodyOrigin);
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 							{
 								rRenderLayOut luniform(o);
 								b->RenderBodyShadow();

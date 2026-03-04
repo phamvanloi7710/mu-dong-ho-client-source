@@ -508,7 +508,7 @@ void Draw_RenderObject(OBJECT* o, bool Translate, int Select, int ExtraMon)
 
 	if ((EditFlag != EDIT_NONE) || (EditFlag == EDIT_NONE && o->HiddenMesh != -2))
 	{
-		#ifdef jdk_shader_local330
+		#ifdef USING_SHADER_330
 			rRenderLayOut uniform(o);
 		#endif
 		if (ExtraMon == 10)
@@ -889,7 +889,7 @@ void Draw_RenderObject(OBJECT* o, bool Translate, int Select, int ExtraMon)
 				{
 					EnableAlphaTest();
 
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 					if (gMapManager->currentMap == WD_7ATLANSE)
 					{
 						glColor4f(0.f, 0.f, 0.f, 0.2f);
@@ -962,7 +962,7 @@ void Draw_RenderObject(OBJECT* o, bool Translate, int Select, int ExtraMon)
 				{
 					EnableAlphaTest();
 
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 					if (gMapManager->currentMap == WD_7ATLANSE)
 					{
 						glColor4f(0.f, 0.f, 0.f, 0.2f);
@@ -1099,7 +1099,7 @@ void Draw_RenderObject(OBJECT* o, bool Translate, int Select, int ExtraMon)
 					vec3_t Position;
 					EnableAlphaTest();
 
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 					if (gMapManager->currentMap == WD_7ATLANSE)
 					{
 						glColor4f(0.f, 0.f, 0.f, 0.2f);
@@ -1174,7 +1174,7 @@ void Draw_RenderObject(OBJECT* o, bool Translate, int Select, int ExtraMon)
 
 			vec3_t Position;
 
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 			glColor4f(0.f, 0.f, 0.f, 1.f);
 #endif
 			VectorCopy(o->Position, Position);
@@ -4020,7 +4020,7 @@ void Draw_RenderObject_AfterCharacter(OBJECT* o, bool Translate, int Select, int
 	{
 		if ((EditFlag != EDIT_NONE) || (EditFlag == EDIT_NONE && o->HiddenMesh != -2))
 		{
-			#ifdef jdk_shader_local330
+			#ifdef USING_SHADER_330
 				rRenderLayOut uniform(o);
 			#endif
 
@@ -8749,7 +8749,7 @@ void RenderPartObjectBody(BMD* b, OBJECT* o, int Type, float Alpha, int RenderTy
 				b->BodyLight[0] = 1.0;
 				b->BodyLight[1] = 0.7;
 				b->BodyLight[2] = 0.5;
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 				glColor3fv(b->BodyLight);
 #endif
 				b->RenderMesh(2, 2, o->Alpha, o->BlendMesh, o->BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, o->HiddenMesh);
@@ -8772,7 +8772,7 @@ void RenderPartObjectBody(BMD* b, OBJECT* o, int Type, float Alpha, int RenderTy
 				b->BodyLight[0] = 1.0;
 				b->BodyLight[1] = 1.0;
 				b->BodyLight[2] = 1.0;
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 				glColor3fv(b->BodyLight);
 #endif
 				b->RenderMesh(1, 2, o->Alpha, o->BlendMesh, o->BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, -1);
@@ -8796,7 +8796,7 @@ void RenderPartObjectBody(BMD* b, OBJECT* o, int Type, float Alpha, int RenderTy
 					b->BodyLight[0] = 1.0;
 					b->BodyLight[1] = 1.0;
 					b->BodyLight[2] = 1.0;
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 					glColor3fv(b->BodyLight);
 #endif
 					b->RenderMesh(0, 2, o->Alpha, o->BlendMesh, o->BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, -1);
@@ -8806,7 +8806,7 @@ void RenderPartObjectBody(BMD* b, OBJECT* o, int Type, float Alpha, int RenderTy
 					b->BodyLight[0] = 1.0;
 					b->BodyLight[1] = 1.0;
 					b->BodyLight[2] = 1.0;
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 					glColor3fv(b->BodyLight);
 #endif
 					b->RenderBody(2, o->Alpha, o->BlendMesh, o->BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, o->HiddenMesh, -1);
@@ -8816,7 +8816,7 @@ void RenderPartObjectBody(BMD* b, OBJECT* o, int Type, float Alpha, int RenderTy
 				b->BodyLight[0] = 1.0;
 				b->BodyLight[1] = 1.0;
 				b->BodyLight[2] = 1.0;
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 				glColor3fv(b->BodyLight);
 #endif
 				b->RenderBody(2, o->Alpha, o->BlendMesh, o->BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, o->HiddenMesh, -1);
@@ -8826,7 +8826,7 @@ void RenderPartObjectBody(BMD* b, OBJECT* o, int Type, float Alpha, int RenderTy
 				b->BodyLight[0] = 1.0;
 				b->BodyLight[1] = 1.0;
 				b->BodyLight[2] = 1.0;
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 				glColor3fv(b->BodyLight);
 #endif
 				b->RenderBody(2, o->Alpha, o->BlendMesh, o->BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, o->HiddenMesh, -1);
@@ -9024,7 +9024,7 @@ void RenderPartObjectBody(BMD* b, OBJECT* o, int Type, float Alpha, int RenderTy
 									b->RenderMesh(1, 66, o->Alpha, o->BlendMesh, o->BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, -1);
 									break;
 								case (MODEL_SHIELD + 21):
-								#ifndef jdk_shader_local330
+								#ifndef USING_SHADER_330
 									glColor3f(1.0, 1.0, 1.0);
 								#endif
 									b->RenderMesh(0, 2, o->Alpha, o->BlendMesh, o->BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, -1);
@@ -9319,13 +9319,13 @@ void RenderPartObjectBody(BMD* b, OBJECT* o, int Type, float Alpha, int RenderTy
 																												BlendMeshLight = sinf(WorldTime * 0.0008) * 0.7 + 0.5;
 																												b->RenderMesh(2, 2, Alpha, 2, BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, -1);
 																												b->RenderMesh(1, 2, Alpha, 1, o->BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, -1);
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 																												glColor3f(0.43000001, 0.14, 0.60000002);
 #endif
 																												BlendMeshTexCoordV = WorldTime * 0.0005;
 																												BlendMeshTexCoordU = WorldTime * 0.0001;
 																												b->RenderMesh(3, 68, Alpha, 3, o->BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, -1);
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 																												glColor3f(1.0, 1.0, 1.0);
 #endif
 																												break;
@@ -9447,7 +9447,7 @@ void RenderPartObjectBody(BMD* b, OBJECT* o, int Type, float Alpha, int RenderTy
 																																		{
 																																			if (b->HideSkin)
 																																			{
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 																																				glColor3fv(b->BodyLight);
 #endif
 																																				b->RenderMesh(0, 2, o->Alpha, o->BlendMesh, o->BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, -1);
@@ -9503,7 +9503,7 @@ void RenderPartObjectBody(BMD* b, OBJECT* o, int Type, float Alpha, int RenderTy
 																																				texture = 1;
 																																			}
 																																		}
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 																																		glColor3fv(b->BodyLight);
 #endif
 																																		b->RenderMesh(0, 2, o->Alpha, o->BlendMesh, o->BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, texture + BITMAP_INVEN_PANTS);
@@ -9532,7 +9532,7 @@ void RenderPartObjectBody(BMD* b, OBJECT* o, int Type, float Alpha, int RenderTy
 																																		}
 																																	}
 
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 																																	glColor3fv(b->BodyLight);
 #endif
 																																	b->RenderMesh(0, 2, o->Alpha, o->BlendMesh, o->BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, texture + BITMAP_INVEN_ARMOR);
@@ -9548,7 +9548,7 @@ void RenderPartObjectBody(BMD* b, OBJECT* o, int Type, float Alpha, int RenderTy
 																															}
 																															else if (b->HideSkin)
 																															{
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 																																glColor3fv(b->BodyLight);
 #endif
 																																switch (Type)
@@ -9740,7 +9740,7 @@ void RenderPartObjectBody(BMD* b, OBJECT* o, int Type, float Alpha, int RenderTy
 						vBodyLight[1] = b->BodyLight[1];
 						vBodyLight[2] = b->BodyLight[2];
 						b->BeginRender(1.f);
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 						glColor3f(b->BodyLight[0], b->BodyLight[1], b->BodyLight[2]);
 #endif
 						b->RenderMesh(3, 2, 1.0, -1, o->BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, -1);
@@ -9800,7 +9800,7 @@ LABEL_334:
 			case (MODEL_HELM + 49):
 				if (b->HideSkin == 1)
 				{
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 					glColor3fv(b->BodyLight);
 #endif
 					b->RenderMesh(0, 2, o->Alpha, o->BlendMesh, o->BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, -1);
@@ -9813,7 +9813,7 @@ LABEL_334:
 			case (MODEL_ARMOR + 49):
 				if (b->HideSkin == 1)
 				{
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 					glColor3fv(b->BodyLight);
 #endif
 					b->RenderMesh(2, 2, o->Alpha, o->BlendMesh, o->BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, -1);
@@ -9826,7 +9826,7 @@ LABEL_334:
 			case (MODEL_HELM + 50):
 				if (b->HideSkin == 1)
 				{
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 					glColor3fv(b->BodyLight);
 #endif
 					b->RenderMesh(1, 2, o->Alpha, o->BlendMesh, o->BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, -1);
@@ -9839,7 +9839,7 @@ LABEL_334:
 			case (MODEL_HELM + 53):
 				if (b->HideSkin == 1)
 				{
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 					glColor3fv(b->BodyLight);
 #endif
 					b->RenderMesh(2, 2, o->Alpha, o->BlendMesh, o->BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, -1);
@@ -9852,7 +9852,7 @@ LABEL_334:
 			default:
 				if (Type == (MODEL_SPEAR + 11))
 				{
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 					glColor3fv(b->BodyLight);
 #endif
 					b->RenderMesh(2, 2, o->Alpha, o->BlendMesh, o->BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, -1);
@@ -9865,7 +9865,7 @@ LABEL_334:
 				}
 				if (Type == (MODEL_MACE + 18))
 				{
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 					glColor3fv(b->BodyLight);
 #endif
 					b->RenderMesh(0, 2, o->Alpha, o->BlendMesh, o->BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, -1);
@@ -9881,7 +9881,7 @@ LABEL_334:
 				{
 					BlendMeshLight = sinf(WorldTime * 0.002) * 0.3 + 0.5;
 					b->BeginRender(1.f);
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 					glColor3f(b->BodyLight[0], b->BodyLight[1], b->BodyLight[2]);
 #endif
 					b->RenderMesh(0, 2, 1.0, -1, o->BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, -1);
@@ -9890,7 +9890,7 @@ LABEL_334:
 					b->RenderMesh(6, 2, 1.0, -1, o->BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, -1);
 					b->RenderMesh(3, 2, 1.0, 3, BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, -1);
 					b->RenderMesh(4, 2, 1.0, 4, BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, -1);
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 					glColor3f(1.0, 1.0, 1.0);
 #endif
 					b->RenderMesh(5, 2, 1.0, -1, o->BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, -1);
@@ -9899,7 +9899,7 @@ LABEL_334:
 				}
 				if (Type == (MODEL_POTION + 28))
 				{
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 					glColor3f(1.0, 1.0, 1.0);
 #endif
 					b->StreamMesh = 1;
@@ -9938,7 +9938,7 @@ LABEL_334:
 					BlendMeshLight = fMeshLight;
 					b->RenderMesh(2, 2, 1.0, 2, BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, -1);
 					fMeshLight += fAdd;
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 					glColor3f(1.0, 1.0, 1.0);
 #endif
 					b->BodyLight[0] = 1.0;
@@ -9954,7 +9954,7 @@ LABEL_334:
 						b->RenderBody(RenderType, Alpha, o->BlendMesh, o->BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, -1, -1);
 						b->RenderMesh(1, 68, Alpha, 1, 0.2, BlendMeshTexCoordU, BlendMeshTexCoordV, -1);
 
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 						glColor3f(1.0, 1.0, 1.0);
 #endif
 						BlendMeshLight = sinf(WorldTime * 0.005);
@@ -9991,14 +9991,14 @@ LABEL_334:
 						b->BodyLight[0] = vBodyLight[0] * 0.3;
 						b->BodyLight[1] = vBodyLight[1] * 0.3;
 						b->BodyLight[2] = vBodyLight[2] * 0.3;
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 						glColor3f(b->BodyLight[0], b->BodyLight[1], b->BodyLight[2]);
 #endif
 						b->RenderMesh(2, 1, 1.0, -1, o->BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, -1);
 						b->BodyLight[0] = vBodyLight[0];
 						b->BodyLight[1] = vBodyLight[1];
 						b->BodyLight[2] = vBodyLight[2];
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 						glColor3f(b->BodyLight[0], b->BodyLight[1], b->BodyLight[2]);
 #endif
 						BlendMeshTexCoordV = WorldTime * 0.01;
@@ -10011,7 +10011,7 @@ LABEL_334:
 						b->BodyLight[0] = vBodyLight[0] * Luminosity;
 						b->BodyLight[1] = vBodyLight[0] * Luminosity;
 						b->BodyLight[2] = vBodyLight[0] * Luminosity;
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 						glColor3f(b->BodyLight[0], b->BodyLight[1], b->BodyLight[2]);
 #endif
 						BlendMeshTexCoordV = WorldTime * 0.0005;
@@ -10023,15 +10023,15 @@ LABEL_334:
 					if (Type == (MODEL_SHIELD + 16))
 					{
 						b->BeginRender(1.f);
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 						glColor4f(b->BodyLight[0], b->BodyLight[1], b->BodyLight[2], 0.80000001);
 #endif
 						b->RenderMesh(1, 2, 0.80000001, -1, o->BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, -1);
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 						glColor4f(b->BodyLight[0], b->BodyLight[1], b->BodyLight[2], 0.5);
 #endif
 						b->RenderMesh(3, 2, 0.5, -1, o->BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, -1);
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 						glColor3f(b->BodyLight[0], b->BodyLight[1], b->BodyLight[2]);
 #endif
 						b->RenderMesh(0, 2, 1.0, -1, o->BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, -1);
@@ -10071,7 +10071,7 @@ LABEL_334:
 						b->BeginRender(1.f);
 						if (o->HiddenMesh == 1)
 						{
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 							glColor3f(1.0, 1.0, 1.0);
 #endif
 							b->BodyLight[0] = 1.0;
@@ -10086,7 +10086,7 @@ LABEL_334:
 						}
 						else if (!o->HiddenMesh)
 						{
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 							glColor3f(1.0, 1.0, 1.0);
 #endif
 							b->BodyLight[0] = 1.0;
@@ -10106,7 +10106,7 @@ LABEL_334:
 						b->BeginRender(1.f);
 						if (o->HiddenMesh == 1)
 						{
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 							glColor3f(1.0, 1.0, 1.0);
 #endif
 							b->BodyLight[0] = 1.0;
@@ -10116,7 +10116,7 @@ LABEL_334:
 						}
 						else if (!o->HiddenMesh)
 						{
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 							glColor3f(1.0, 1.0, 1.0);
 #endif
 							b->BodyLight[0] = 1.0;
@@ -10131,7 +10131,7 @@ LABEL_334:
 						if (Type == (MODEL_HELPER + 11))
 						{
 							b->BeginRender(1.f);
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 							glColor3f(1.0, 1.0, 1.0);
 #endif
 							b->BodyLight[0] = 1.0;
@@ -10263,7 +10263,7 @@ LABEL_334:
 																													b->BodyLight[0] = 1.0;
 																													b->BodyLight[1] = 1.0;
 																													b->BodyLight[2] = 1.0;
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 																													glColor3fv(b->BodyLight);
 #endif
 																													b->RenderBody(2, o->Alpha, o->BlendMesh, o->BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, o->HiddenMesh, -1);
@@ -10335,7 +10335,7 @@ LABEL_334:
 																																						b->BodyLight[0] = 1.0;
 																																						b->BodyLight[1] = 1.0;
 																																						b->BodyLight[2] = 1.0;
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 																																						glColor3fv(b->BodyLight);
 #endif
 																																						b->RenderMesh(0, 2, o->Alpha, o->BlendMesh, o->BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, -1);
@@ -10345,7 +10345,7 @@ LABEL_334:
 																																						b->BodyLight[0] = 1.0;
 																																						b->BodyLight[1] = 1.0;
 																																						b->BodyLight[2] = 1.0;
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 																																						glColor3fv(b->BodyLight);
 #endif
 																																						b->RenderBody(2, o->Alpha, o->BlendMesh, o->BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, o->HiddenMesh, -1);
@@ -10359,7 +10359,7 @@ LABEL_334:
 																																					{
 																																						if (b->HideSkin)
 																																						{
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 																																							glColor3fv(b->BodyLight);
 #endif
 																																							b->RenderMesh(0, 2, o->Alpha, o->BlendMesh, o->BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, -1);
@@ -10463,7 +10463,7 @@ LABEL_334:
 																																										b->BodyLight[0] = 1.0;
 																																										b->BodyLight[1] = 0.1;
 																																										b->BodyLight[2] = 0.1;
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 																																										glColor3fv(b->BodyLight);
 #endif
 																																										//v176 = WorldTime * 0.0015;
@@ -10488,7 +10488,7 @@ LABEL_334:
 																																										b->BodyLight[0] = 0.15000001;
 																																										b->BodyLight[1] = 1.0;
 																																										b->BodyLight[2] = 0.25;
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 																																										glColor3fv(b->BodyLight);
 #endif
 																																										b->RenderMesh(1, 66, o->Alpha, o->BlendMesh, o->BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, -1);
@@ -10514,7 +10514,7 @@ LABEL_334:
 																																											b->BodyLight[0] = 0.15000001;
 																																											b->BodyLight[1] = 1.0;
 																																											b->BodyLight[2] = 0.25;
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 																																											glColor3fv(b->BodyLight);
 #endif
 																																											b->RenderMesh(1, 66, o->Alpha, o->BlendMesh, o->BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, -1);
@@ -10530,7 +10530,7 @@ LABEL_334:
 																																											Luminosity = (sinf(WorldTime * 0.003) + 1.0) * 0.3 + 0.4;
 																																											if (b->HideSkin)
 																																											{
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 																																												glColor3fv(b->BodyLight);
 #endif
 																																												b->RenderMesh(0, 2, o->Alpha, o->BlendMesh, o->BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, -1);
@@ -10566,7 +10566,7 @@ LABEL_334:
 																																											vBodyLight[0] = b->BodyLight[0];
 																																											vBodyLight[1] = b->BodyLight[1];
 																																											vBodyLight[2] = b->BodyLight[2];
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 																																											glColor3fv(b->BodyLight);
 #endif
 																																											Luminosity = (sinf(WorldTime * 0.003) + 1.0) * 0.3 + 0.4;
@@ -10582,7 +10582,7 @@ LABEL_334:
 																																											b->BodyLight[2] = vBodyLight[2];
 																																											break;
 																																										case (MODEL_BOOTS + 73):
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 																																											glColor3fv(b->BodyLight);
 #endif
 																																											Luminosity = (sinf(WorldTime * 0.003) + 1.0) * 0.3 + 0.4;
@@ -10632,7 +10632,7 @@ LABEL_334:
 																																				}
 																																				else if (b->HideSkin)
 																																				{
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 																																					glColor3fv(b->BodyLight);
 #endif
 																																					b->RenderMesh(1, 2, o->Alpha, o->BlendMesh, o->BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, -1);
@@ -10652,7 +10652,7 @@ LABEL_334:
 																																			b->BodyLight[0] = 1.0;
 																																			b->BodyLight[1] = 1.0;
 																																			b->BodyLight[2] = 1.0;
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 																																			glColor3fv(b->BodyLight);
 #endif
 																																			b->RenderMesh(0, 2, o->Alpha, o->BlendMesh, o->BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, -1);
@@ -11362,7 +11362,7 @@ LABEL_334:
 
 			if (b->HideSkin)
 			{
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 				glColor3fv(b->BodyLight);
 #endif
 				b->RenderMesh(0, 2, o->Alpha, o->BlendMesh, o->BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV, texture);
@@ -11387,7 +11387,7 @@ void RenderPartObjectBodyColor(BMD* b, OBJECT* o, int Type, float Alpha, int Ren
 	if (Type >= MODEL_HELM_MONK && Type <= MODEL_BOOTS_MONK + MODEL_ITEM_COMMONCNT_RAGEFIGHTER)
 		Type = g_CMonkSystem.OrginalTypeCommonItemMonk(Type);
 
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 	rRenderLayOut uniform(o);
 #endif
 
@@ -11511,7 +11511,7 @@ void RenderPartObjectBodyColor(BMD* b, OBJECT* o, int Type, float Alpha, int Ren
 						{
 							if (Type == MODEL_HELM + 61)
 							{
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 								glColor3fv(b->BodyLight);
 #endif
 								b->RenderMesh(0, RenderType, o->Alpha, o->BlendMesh, o->BlendMeshLight, o->BlendMeshTexCoordU, o->BlendMeshTexCoordV, -1);
@@ -11558,7 +11558,7 @@ void RenderPartObjectBodyColor(BMD* b, OBJECT* o, int Type, float Alpha, int Ren
 						}
 						else
 						{
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 							glColor3fv(b->BodyLight);
 #endif
 							b->RenderMesh(1, RenderType, o->Alpha, o->BlendMesh, o->BlendMeshLight, o->BlendMeshTexCoordU, o->BlendMeshTexCoordV, -1);
@@ -11591,7 +11591,7 @@ void RenderPartObjectBodyColor(BMD* b, OBJECT* o, int Type, float Alpha, int Ren
 
 void RenderPartObjectBodyColor2(BMD* b, OBJECT* o, int Type, float Alpha, int RenderType, float Bright, int Texture)
 {
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 	rRenderLayOut uniform(o);
 #endif
 	if (Type >= MODEL_HELM_MONK && Type <= MODEL_BOOTS_MONK + MODEL_ITEM_COMMONCNT_RAGEFIGHTER)
@@ -11652,7 +11652,7 @@ void RenderPartObjectBodyColor2(BMD* b, OBJECT* o, int Type, float Alpha, int Re
 					{
 						if (Type == MODEL_HELM + 61)
 						{
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 							glColor3fv(b->BodyLight);
 #endif
 							b->RenderMesh(0, RenderType, o->Alpha, o->BlendMesh, o->BlendMeshLight, o->BlendMeshTexCoordU, o->BlendMeshTexCoordV, -1);
@@ -11694,7 +11694,7 @@ void RenderPartObjectBodyColor2(BMD* b, OBJECT* o, int Type, float Alpha, int Re
 					}
 					else
 					{
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 						glColor3fv(b->BodyLight);
 #endif
 						b->RenderMesh(1, RenderType, o->Alpha, o->BlendMesh, o->BlendMeshLight, o->BlendMeshTexCoordU, o->BlendMeshTexCoordV, -1);
@@ -11882,13 +11882,13 @@ void RenderPartObjectEffect(OBJECT* o, int Type, vec3_t Light, float Alpha, int 
 	if (b == NULL)
 		return;
 
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 	rRenderLayOut uniform(o);
 #endif
 
 	if (o->EnableShadow == true)
 	{
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 		if (gMapManager->currentMap == 7)
 		{
 			EnableAlphaTest();
@@ -12179,7 +12179,7 @@ void RenderPartObjectEffect(OBJECT* o, int Type, vec3_t Light, float Alpha, int 
 	{
 
 		b->BeginRender(o->Alpha);
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 		glColor3f(1.f, 1.f, 1.f);
 #endif
 		o->BlendMeshLight = 1.f;
@@ -12935,7 +12935,7 @@ void RenderPartObjectEffect(OBJECT* o, int Type, vec3_t Light, float Alpha, int 
 #ifndef CAMERA_TEST
 	else
 	{
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 		if (gMapManager->currentMap == 7)
 		{
 			EnableAlphaTest();
@@ -12997,14 +12997,14 @@ void RenderPartObjectEdge(int Type, BMD* b, OBJECT* o, int Flag, bool Translate,
 		b->Transform(BoneTransform, o->BoundingBoxMin, o->BoundingBoxMax, &o->OBB);
 	}
 
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 	rRenderLayOut uniform(o);
 #endif
 
 	if (o->Type == MODEL_WARCRAFT)
 	{
 		b->BeginRender(o->Alpha);
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 		if (o->Alpha >= 0.99f)
 		{
 			glColor3fv(b->BodyLight);
@@ -13013,31 +13013,31 @@ void RenderPartObjectEdge(int Type, BMD* b, OBJECT* o, int Flag, bool Translate,
 		{
 			glColor4f(b->BodyLight[0], b->BodyLight[1], b->BodyLight[2], o->Alpha);
 		}
-#endif // jdk_shader_local330
+#endif // USING_SHADER_330
 		b->RenderMesh(0, Flag, o->Alpha, o->BlendMesh, o->BlendMeshLight, o->BlendMeshTexCoordU, o->BlendMeshTexCoordV, o->HiddenMesh);
 		b->EndRender();
 	}
 	else if (o->Type == MODEL_MONSTER01 + 114)
 	{
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 		glColor3fv(b->BodyLight);
-#endif // jdk_shader_local330
+#endif // USING_SHADER_330
 		b->RenderMesh(0, Flag, o->Alpha, o->BlendMesh, o->BlendMeshLight, o->BlendMeshTexCoordU, o->BlendMeshTexCoordV, o->HiddenMesh);
 		b->RenderMesh(1, Flag, o->Alpha, o->BlendMesh, o->BlendMeshLight, o->BlendMeshTexCoordU, o->BlendMeshTexCoordV, o->HiddenMesh);
 	}
 	else if (o->Type == MODEL_MONSTER01 + 116)
 	{
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 		glColor3fv(b->BodyLight);
-#endif // jdk_shader_local330
+#endif // USING_SHADER_330
 		b->RenderMesh(0, Flag, o->Alpha, o->BlendMesh, o->BlendMeshLight, o->BlendMeshTexCoordU, o->BlendMeshTexCoordV, o->HiddenMesh);
 		b->RenderMesh(1, Flag, o->Alpha, o->BlendMesh, o->BlendMeshLight, o->BlendMeshTexCoordU, o->BlendMeshTexCoordV, o->HiddenMesh);
 	}
 	else if (o->Type == MODEL_MONSTER01 + 121)
 	{
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 		glColor3fv(b->BodyLight);
-#endif // jdk_shader_local330
+#endif // USING_SHADER_330
 		b->RenderMesh(0, Flag, o->Alpha, o->BlendMesh, o->BlendMeshLight, o->BlendMeshTexCoordU, o->BlendMeshTexCoordV, o->HiddenMesh);
 		b->RenderMesh(2, Flag, o->Alpha, o->BlendMesh, o->BlendMeshLight, o->BlendMeshTexCoordU, o->BlendMeshTexCoordV, o->HiddenMesh);
 		b->RenderMesh(3, Flag, o->Alpha, o->BlendMesh, o->BlendMeshLight, o->BlendMeshTexCoordU, o->BlendMeshTexCoordV, o->HiddenMesh);
@@ -13057,7 +13057,7 @@ void RenderPartObjectEdge2(BMD* b, OBJECT* o, int Flag, bool Translate, float Sc
 
 	BoneScale = Scale;
 
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 	rRenderLayOut uniform(o);
 #endif
 

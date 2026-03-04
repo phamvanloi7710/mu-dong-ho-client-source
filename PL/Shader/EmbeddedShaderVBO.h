@@ -1,6 +1,6 @@
 #pragma once
 
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 namespace EmbeddedShaderVBO {
 struct ShaderSourcePair { const char* vertex; const char* fragment; };
 static const char kModelVertexSource[] = R"__VBO_SHADER__(

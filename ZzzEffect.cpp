@@ -19205,7 +19205,7 @@ void RenderEffects(bool bRenderBlendMesh)
 
 						BodyLight(pObject, pModel);
 						pModel->BodyScale = pObject->Scale;
-						#ifdef jdk_shader_local330
+						#ifdef USING_SHADER_330
 							rRenderLayOut uniform(o);
 						#endif
 						pModel->RenderMesh(0, RENDER_TEXTURE | RENDER_BRIGHT, pObject->Alpha, 0, pObject->Alpha, pObject->BlendMeshTexCoordU, pObject->BlendMeshTexCoordV, -1);
@@ -19328,7 +19328,7 @@ void RenderEffects(bool bRenderBlendMesh)
 						arrEachBoneTranslations = new vec3_t[pBMDSwordModel->NumBones];
 						pBMDSwordModel->AnimationTransformOnlySelf(arrEachBoneTranslations, o);
 					}
-					#ifdef jdk_shader_local330
+					#ifdef USING_SHADER_330
 						rRenderLayOut uniform(o);
 					#endif
 					pBMDSwordModel->LightEnable = true;

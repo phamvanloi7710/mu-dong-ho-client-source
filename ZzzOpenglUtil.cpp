@@ -716,7 +716,7 @@ void BeginOpengl(int x, int y, int Width, int Height, bool Screen)
 	}
 
 	GetOpenGLMatrix(CameraMatrix);
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 	OGL330MODEL::UpdateCameraMatrix();
 #endif
 }
@@ -756,7 +756,7 @@ void UpdateMousePositionn()
 	glLoadIdentity();
 	glTranslatef(-CameraPosition[0], -CameraPosition[1], -CameraPosition[2]);
 	GetOpenGLMatrix(CameraMatrix);
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 	OGL330MODEL::UpdateCameraMatrix();
 #endif
 
@@ -1119,7 +1119,7 @@ void RenderSprite(int Texture, vec3_t Position, float Width, float Height, vec3_
 				colors[i][3] = Light[0];
 		}
 	}
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 	OGL330::SwitchStatePipeline();
 #endif
 	glEnableClientState(GL_VERTEX_ARRAY);
@@ -1275,7 +1275,7 @@ float RenderNumberHQ(float x, float y, int Num, float Width, float Height)
 
 void BeginBitmap()
 {
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 	OGL330MODEL::UnUseShader();
 #endif
 	glMatrixMode(GL_PROJECTION);
@@ -1426,7 +1426,7 @@ void RenderColorBitmap(int Texture, float x, float y, float Width, float Height,
 		glColor4f(1.f, 1.f, 1.f, 1.f);
 	}
 	glEnd();*/
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 	OGL330::SwitchStatePipeline();
 #endif
 	// Habilitar el uso de punteros de vértices y coordenadas de textura
@@ -1483,7 +1483,7 @@ void RenderBitmap(int Texture, float x, float y, float Width, float Height, floa
 	TEXCOORD(c[2], u + uWidth, v + vHeight);
 	TEXCOORD(c[1], u, v + vHeight);
 
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 	OGL330::SwitchStatePipeline();
 #endif
 
@@ -1560,7 +1560,7 @@ void RenderNoBitmap(int Texture, float x, float y, float Width, float Height, fl
 		}
 	}
 	glEnd();*/
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 	OGL330::SwitchStatePipeline();
 #endif
 	// Habilitar el uso de punteros de vértices y coordenadas de textura

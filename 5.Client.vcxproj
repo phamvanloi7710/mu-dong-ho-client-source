@@ -71,7 +71,7 @@
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <AdditionalIncludeDirectories>$(ProjectDir)..\dependencies\include;$(ProjectDir)..\dependencies\include\glm;$(ProjectDir)..\dependencies\include\turbojpeg;$(ProjectDir)..\dependencies\include\Sol;$(ProjectDir)..\dependencies\include\Lua;$(ProjectDir)..\dependencies\include\asio;$(ProjectDir)..\dependencies\ImGui;$(ProjectDir)..\dependencies\ImGui\backends;$(ProjectDir)..\dependencies\include\cryptopp820;$(ProjectDir)..\Libraries\OpenSSL-Win32\include;$(ProjectDir)..\Libraries\curl\include;$(ProjectDir)..\Libraries\json\include;$(ProjectDir)..\Libraries\qrencode-x86-windows-static\include;$(ProjectDir)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_FOREIGN_NDEBUG;_LANGUAGE_FOREIGN;_LANGUAGE_ENG;LDS_PATCH_GLOBAL_100520;PROTO_EXTRA;MAIN_UPDATE=603;FT2_BUILD_LIBRARY;WIN32_LEAN_AND_MEAN;__WINHTTP_H__;_CRT_DECLARE_NONSTDC_NAMES;CURL_STATICLIB;SHUTDOWN_SCALEFORM_INFO;jdk_shader_local330;PROCESS_FPS_NEW;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_FOREIGN_NDEBUG;_LANGUAGE_FOREIGN;_LANGUAGE_ENG;LDS_PATCH_GLOBAL_100520;PROTO_EXTRA;MAIN_UPDATE=603;FT2_BUILD_LIBRARY;WIN32_LEAN_AND_MEAN;__WINHTTP_H__;_CRT_DECLARE_NONSTDC_NAMES;CURL_STATICLIB;SHUTDOWN_SCALEFORM_INFO;PROCESS_FPS_NEW;USING_SHADER_330;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>
       </RuntimeTypeInfo>
@@ -136,7 +136,7 @@
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <AdditionalIncludeDirectories>$(ProjectDir)..\dependencies\include;$(ProjectDir)..\dependencies\include\glm;$(ProjectDir)..\dependencies\include\turbojpeg;$(ProjectDir)..\dependencies\include\Sol;$(ProjectDir)..\dependencies\include\Lua;$(ProjectDir)..\dependencies\include\asio;$(ProjectDir)..\dependencies\ImGui;$(ProjectDir)..\dependencies\ImGui\backends;$(ProjectDir)..\dependencies\include\cryptopp820;$(ProjectDir)..\Libraries\OpenSSL-Win32\include;$(ProjectDir)..\Libraries\curl\include;$(ProjectDir)..\Libraries\json\include;$(ProjectDir)..\Libraries\qrencode-x86-windows-static\include;$(ProjectDir)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;DEBUG;_WINDOWS;_FOREIGN_DEBUG;_LANGUAGE_FOREIGN;_LANGUAGE_ENG;LDS_PATCH_GLOBAL_100520;PROTO_EXTRA;MAIN_UPDATE=603;FT2_BUILD_LIBRARY;FOR_WORK;CONSOLE_DEBUG;EFFECT_MNG_HANDLE;SHUTDOWN_SCALEFORM_INFO;jdk_shader_local330;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;DEBUG;_WINDOWS;_FOREIGN_DEBUG;_LANGUAGE_FOREIGN;_LANGUAGE_ENG;LDS_PATCH_GLOBAL_100520;PROTO_EXTRA;MAIN_UPDATE=603;FT2_BUILD_LIBRARY;FOR_WORK;CONSOLE_DEBUG;EFFECT_MNG_HANDLE;SHUTDOWN_SCALEFORM_INFO;USING_SHADER_330;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>
       </RuntimeTypeInfo>
@@ -747,6 +747,7 @@
     <ClInclude Include="PL\Shader\PL_ModelBMD.h" />
     <ClInclude Include="PL\Shader\PL_OpenGL.h" />
     <ClInclude Include="PL\Shader\PL_RenderBMD.h" />
+    <ClInclude Include="PL\Shader\EmbeddedShaderVBO.h" />
     <ClInclude Include="ProtectSend\cProtectFile.h" />
     <ClInclude Include="ProtectSend\SendMessage.h" />
     <ClInclude Include="Protocol.h" />

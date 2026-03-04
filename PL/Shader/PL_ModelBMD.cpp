@@ -1,12 +1,12 @@
 #include "StdAfx.h"
 #include "PL/Shader/PL_ModelBMD.h"
 #include <iostream>
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 #include "ZzzBMD.h"
 #include "ZzzObject.h"
 #include "PL/Shader/PL_RenderBMD.h"
 
-#include "PL/Shader/VBO/EmbeddedShaderVBO.h"
+#include "PL/Shader/EmbeddedShaderVBO.h"
 
 #include "Utilities/Log/muConsoleDebug.h"
 #include "PL/Shader/PL_OpenGL.h"

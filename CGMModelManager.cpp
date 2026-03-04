@@ -99,7 +99,7 @@ void CGMModelManager::AccessModel(int Type, char* Path, char* FileName, int i)
 	}
 	else
 	{
-		#ifdef jdk_shader_local330
+		#ifdef USING_SHADER_330
 				OGL330MODEL::ConvertOldMeshToVaoMesh(Type);
 		#endif
 	}

@@ -398,7 +398,7 @@ bool MapProcess::RenderObjectVisual(OBJECT* o, BMD* b)
 bool MapProcess::RenderObjectMesh(OBJECT* o, BMD* b, bool ExtraMon)
 {
 	int mapIndex = gMapManager->currentMap;
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 	rRenderLayOut uniform(o);
 #endif
 	for (MapList::iterator iter = m_MapList.begin(); iter != m_MapList.end();)
@@ -429,7 +429,7 @@ bool MapProcess::RenderObjectMesh(OBJECT* o, BMD* b, bool ExtraMon)
 void MapProcess::RenderAfterObjectMesh(OBJECT* o, BMD* b, bool ExtraMon)
 {
 	int mapIndex = gMapManager->currentMap;
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 	rRenderLayOut uniform(o);
 #endif
 	for (MapList::iterator iter = m_MapList.begin(); iter != m_MapList.end(); )

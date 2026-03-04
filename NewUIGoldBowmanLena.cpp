@@ -273,7 +273,7 @@ void CNewUIGoldBowmanLena::Render3D()
 	glPushMatrix();
 	glLoadIdentity();
 	GetOpenGLMatrix(CameraMatrix);
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 	OGL330MODEL::UpdateCameraMatrix();
 #endif
 	EnableDepthTest();

@@ -446,7 +446,7 @@ void DestroyWindow()
 			g_pMovieScene->Destroy();
 		}
 	#endif // MOVIE_DIRECTSHOW
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 		OGL330::Release();
 #endif
 	//. release font handle
@@ -1264,7 +1264,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR szCmdLin
 		}
 	#endif // V_SINCRONIZE
 
-	#ifdef jdk_shader_local330
+	#ifdef USING_SHADER_330
 		gShaderGL->Init();
 	#endif
 
@@ -1343,7 +1343,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR szCmdLin
 		g_pMovieScene = new CMovieScene;
 	#endif // MOVIE_DIRECTSHOW
 
-	#ifdef jdk_shader_local330
+	#ifdef USING_SHADER_330
 		OGL330::Init();
 	#endif
 	static CAIController pAIController(Hero);
