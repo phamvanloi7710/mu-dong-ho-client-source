@@ -1,12 +1,12 @@
 #include "StdAfx.h"
 #include "PL/Shader/PL_ModelBMD.h"
-#include <filesystem> // C++17
 #include <iostream>
-#include <sstream>
 #ifdef jdk_shader_local330
 #include "ZzzBMD.h"
 #include "ZzzObject.h"
 #include "PL/Shader/PL_RenderBMD.h"
+
+#include "PL/Shader/VBO/EmbeddedShaderVBO.h"
 
 #include "Utilities/Log/muConsoleDebug.h"
 #include "PL/Shader/PL_OpenGL.h"
@@ -39,23 +39,9 @@ namespace OGL330MODEL
 	GLuint g_CurrentShaderID = 0;
 }
 
-GLuint LoadShaderProgramFromFiles(const char* vertexPath, const char* fragmentPath)
+GLuint LoadShaderProgramFromSource(const char* shaderName, const char* vertexSource, const char* fragmentSource)
 {
-	auto LoadShaderSource = [](const char* path) -> std::string
-		{
-			std::ifstream file(path);
-			if (!file.is_open())
-			{
-				std::cerr << "Failed to open shader: " << path << std::endl;
-				return "";
-			}
-			std::stringstream buffer;
-			buffer << file.rdbuf();
-			return buffer.str();
-		};
-
-	std::string vertCode = LoadShaderSource(vertexPath);
-	const char* vertSrc = vertCode.c_str();
+	const char* vertSrc = vertexSource;
 	GLuint vertShader = glCreateShader(GL_VERTEX_SHADER);
 	glShaderSource(vertShader, 1, &vertSrc, nullptr);
 	glCompileShader(vertShader);
@@ -65,11 +51,10 @@ GLuint LoadShaderProgramFromFiles(const char* vertexPath, const char* fragmentPa
 	if (!success) {
 		char log[512];
 		glGetShaderInfoLog(vertShader, 512, nullptr, log);
-		std::cerr << "Vertex shader error [" << vertexPath << "]: " << log << std::endl;
+		std::cerr << "Vertex shader error [" << shaderName << "]: " << log << std::endl;
 	}
 
-	std::string fragCode = LoadShaderSource(fragmentPath);
-	const char* fragSrc = fragCode.c_str();
+	const char* fragSrc = fragmentSource;
 	GLuint fragShader = glCreateShader(GL_FRAGMENT_SHADER);
 	glShaderSource(fragShader, 1, &fragSrc, nullptr);
 	glCompileShader(fragShader);
@@ -78,7 +63,7 @@ GLuint LoadShaderProgramFromFiles(const char* vertexPath, const char* fragmentPa
 	if (!success) {
 		char log[512];
 		glGetShaderInfoLog(fragShader, 512, nullptr, log);
-		std::cerr << "Fragment shader error [" << fragmentPath << "]: " << log << std::endl;
+		std::cerr << "Fragment shader error [" << shaderName << "]: " << log << std::endl;
 	}
 
 	GLuint program = glCreateProgram();
@@ -115,14 +100,12 @@ void OGL330MODEL::Init()
 	"Metal"
 	};
 
-	char pathBuffer[128];
-	char pathBuffer2[128];
-
 	for (int i = 0; i < SHADER_330_ALL; ++i)
 	{
-		snprintf(pathBuffer, sizeof(pathBuffer), "Data\\Effect\\VBO\\%s.vs", shaderNames[i]);
-		snprintf(pathBuffer2, sizeof(pathBuffer2), "Data\\Effect\\VBO\\%s.fs", shaderNames[i]);
-		shaderProgramMap[i] = LoadShaderProgramFromFiles(pathBuffer, pathBuffer2);
+		shaderProgramMap[i] = LoadShaderProgramFromSource(
+			shaderNames[i],
+			EmbeddedShaderVBO::kShaderSources[i].vertex,
+			EmbeddedShaderVBO::kShaderSources[i].fragment);
 	}
 }
 
