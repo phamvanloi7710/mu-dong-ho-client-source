@@ -25,6 +25,43 @@ struct ShaderUniformCache
 	GLint u_shadowMode;
 	GLint u_shadowProj;
 	GLint u_bodyOrigin;
+	bool samplerBound;
+	bool validProj;
+	bool validView;
+	bool valid_bodyLight;
+	bool valid_lightPosition;
+	bool valid_meshUV;
+	bool valid_setting1;
+	bool valid_setting2;
+	bool valid_enableLight;
+	bool valid_shadowMode;
+	bool valid_bodyOrigin;
+	float lastProj[16];
+	float lastView[16];
+	float last_bodyLight[4];
+	float last_lightPosition[4];
+	float last_meshUV[4];
+	float last_setting1[4];
+	float last_setting2[4];
+	float last_bodyOrigin[3];
+	GLint last_enableLight;
+	GLint last_shadowMode;
+	ShaderUniformCache()
+		: samplerBound(false)
+		, validProj(false)
+		, validView(false)
+		, valid_bodyLight(false)
+		, valid_lightPosition(false)
+		, valid_meshUV(false)
+		, valid_setting1(false)
+		, valid_setting2(false)
+		, valid_enableLight(false)
+		, valid_shadowMode(false)
+		, valid_bodyOrigin(false)
+		, last_enableLight(0)
+		, last_shadowMode(0)
+	{
+	}
 };
 
 static std::unordered_map<GLuint, ShaderUniformCache> g_UniformCache;
@@ -201,49 +238,101 @@ void OGL330MODEL::SendUniform(GLuint shaderID,
 		cache = &it->second;
 	}
 
-	if (cache->uProj >= 0)
+	if (cache->uProj >= 0 && (!cache->validProj || memcmp(cache->lastProj, g_ProjMatrix, sizeof(cache->lastProj)) != 0))
+	{
 		glUniformMatrix4fv(cache->uProj, 1, GL_FALSE, g_ProjMatrix);
+		memcpy(cache->lastProj, g_ProjMatrix, sizeof(cache->lastProj));
+		cache->validProj = true;
+	}
 
-	if (cache->uView >= 0)
+	if (cache->uView >= 0 && (!cache->validView || memcmp(cache->lastView, g_ViewMatrix, sizeof(cache->lastView)) != 0))
+	{
 		glUniformMatrix4fv(cache->uView, 1, GL_FALSE, g_ViewMatrix);
+		memcpy(cache->lastView, g_ViewMatrix, sizeof(cache->lastView));
+		cache->validView = true;
+	}
 
-	if (cache->u_bodyLight >= 0)
-		glUniform4f(cache->u_bodyLight, bodyLight.x, bodyLight.y, bodyLight.z, bodyLight.w);
+	const float bodyLightArr[4] = { bodyLight.x, bodyLight.y, bodyLight.z, bodyLight.w };
+	if (cache->u_bodyLight >= 0 && (!cache->valid_bodyLight || memcmp(cache->last_bodyLight, bodyLightArr, sizeof(bodyLightArr)) != 0))
+	{
+		glUniform4fv(cache->u_bodyLight, 1, bodyLightArr);
+		memcpy(cache->last_bodyLight, bodyLightArr, sizeof(bodyLightArr));
+		cache->valid_bodyLight = true;
+	}
 
-	if (cache->u_lightPosition >= 0)
-		glUniform4f(cache->u_lightPosition, lightPosition.x, lightPosition.y, lightPosition.z, lightPosition.w);
+	const float lightPositionArr[4] = { lightPosition.x, lightPosition.y, lightPosition.z, lightPosition.w };
+	if (cache->u_lightPosition >= 0 && (!cache->valid_lightPosition || memcmp(cache->last_lightPosition, lightPositionArr, sizeof(lightPositionArr)) != 0))
+	{
+		glUniform4fv(cache->u_lightPosition, 1, lightPositionArr);
+		memcpy(cache->last_lightPosition, lightPositionArr, sizeof(lightPositionArr));
+		cache->valid_lightPosition = true;
+	}
 
-	if (cache->u_meshUV >= 0)
-		glUniform4f(cache->u_meshUV, meshUV.x, meshUV.y, meshUV.z, meshUV.w);
+	const float meshUVArr[4] = { meshUV.x, meshUV.y, meshUV.z, meshUV.w };
+	if (cache->u_meshUV >= 0 && (!cache->valid_meshUV || memcmp(cache->last_meshUV, meshUVArr, sizeof(meshUVArr)) != 0))
+	{
+		glUniform4fv(cache->u_meshUV, 1, meshUVArr);
+		memcpy(cache->last_meshUV, meshUVArr, sizeof(meshUVArr));
+		cache->valid_meshUV = true;
+	}
 
-	if (cache->u_setting1 >= 0)
-		glUniform4f(cache->u_setting1, setting1.x, setting1.y, setting1.z, setting1.w);
+	const float setting1Arr[4] = { setting1.x, setting1.y, setting1.z, setting1.w };
+	if (cache->u_setting1 >= 0 && (!cache->valid_setting1 || memcmp(cache->last_setting1, setting1Arr, sizeof(setting1Arr)) != 0))
+	{
+		glUniform4fv(cache->u_setting1, 1, setting1Arr);
+		memcpy(cache->last_setting1, setting1Arr, sizeof(setting1Arr));
+		cache->valid_setting1 = true;
+	}
 
-	if (cache->u_setting2 >= 0)
-		glUniform4f(cache->u_setting2, setting2.x, setting2.y, setting2.z, setting2.w);
+	const float setting2Arr[4] = { setting2.x, setting2.y, setting2.z, setting2.w };
+	if (cache->u_setting2 >= 0 && (!cache->valid_setting2 || memcmp(cache->last_setting2, setting2Arr, sizeof(setting2Arr)) != 0))
+	{
+		glUniform4fv(cache->u_setting2, 1, setting2Arr);
+		memcpy(cache->last_setting2, setting2Arr, sizeof(setting2Arr));
+		cache->valid_setting2 = true;
+	}
 
-	if (cache->u_enableLight >= 0)
-		glUniform1i(cache->u_enableLight, enableLight ? 1 : 0);
+	const GLint enableLightValue = enableLight ? 1 : 0;
+	if (cache->u_enableLight >= 0 && (!cache->valid_enableLight || cache->last_enableLight != enableLightValue))
+	{
+		glUniform1i(cache->u_enableLight, enableLightValue);
+		cache->last_enableLight = enableLightValue;
+		cache->valid_enableLight = true;
+	}
 
-	if (cache->uTexture >= 0)
+	if (cache->uTexture >= 0 && !cache->samplerBound)
+	{
 		glUniform1i(cache->uTexture, 0);
+		cache->samplerBound = true;
+	}
 
-	if (cache->u_shadowMode >= 0)
-		glUniform1i(cache->u_shadowMode, shadow ? 1 : 0);
+	const GLint shadowValue = shadow ? 1 : 0;
+	if (cache->u_shadowMode >= 0 && (!cache->valid_shadowMode || cache->last_shadowMode != shadowValue))
+	{
+		glUniform1i(cache->u_shadowMode, shadowValue);
+		cache->last_shadowMode = shadowValue;
+		cache->valid_shadowMode = true;
+	}
 
 	if (cache->u_shadowProj >= 0)
 		glUniform2f(cache->u_shadowProj, 2000.0f, 4000.0f);
 
-	if (cache->u_bodyOrigin >= 0)
-		glUniform3f(cache->u_bodyOrigin, vBodyOrigin[0], vBodyOrigin[1], vBodyOrigin[2]);
+	const float bodyOriginArr[3] = { vBodyOrigin[0], vBodyOrigin[1], vBodyOrigin[2] };
+	if (cache->u_bodyOrigin >= 0 && (!cache->valid_bodyOrigin || memcmp(cache->last_bodyOrigin, bodyOriginArr, sizeof(bodyOriginArr)) != 0))
+	{
+		glUniform3fv(cache->u_bodyOrigin, 1, bodyOriginArr);
+		memcpy(cache->last_bodyOrigin, bodyOriginArr, sizeof(bodyOriginArr));
+		cache->valid_bodyOrigin = true;
+	}
 }
+
 
 using namespace OGL330MODEL;
 
 CGMMeshShader::CGMMeshShader()
 {
 	m_Transfrom = false;
-	m_Data.reserve(10);
+	m_Data.reserve(2048);
 	m_Lock = false;
 	m_Enabled = true;
 	memset(m_vLightPosOrg, 0, sizeof(vec3_t));
