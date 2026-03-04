@@ -2868,6 +2868,9 @@
     <ClInclude Include="PL\Shader\PL_RenderBMD.h">
       <Filter>MU\Client\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PL\Shader\EmbeddedShaderVBO.h">
+      <Filter>MU\Client\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="script\Mu_Chs.py">

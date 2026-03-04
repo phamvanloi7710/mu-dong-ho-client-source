@@ -1,6 +1,6 @@
 #pragma once
 
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 
 #include "PL/Shader/PL_ModelBMD.h"
 

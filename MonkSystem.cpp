@@ -556,7 +556,7 @@ bool CMonkSystem::RageFighterEffect(OBJECT* _pObj, int _Type)
 
 	if (b)
 	{
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 		rRenderLayOut uniform(_pObj);
 #endif
 		if (_pObj->CurrentAction == PLAYER_SKILL_DARKSIDE_READY)
