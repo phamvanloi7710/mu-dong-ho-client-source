@@ -1468,16 +1468,16 @@
     <ClCompile Include="PL\PL_ResetManager.cpp">
       <Filter>MU\Client\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="New_ModelBMD.cpp">
+    <ClCompile Include="PL\Shader\PL_CullingFace.cpp">
       <Filter>MU\Client\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="New_RenderBMD.cpp">
+    <ClCompile Include="PL\Shader\PL_ModelBMD.cpp">
       <Filter>MU\Client\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MU_OpenGL.cpp">
+    <ClCompile Include="PL\Shader\PL_OpenGL.cpp">
       <Filter>MU\Client\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MUCullingFace.cpp">
+    <ClCompile Include="PL\Shader\PL_RenderBMD.cpp">
       <Filter>MU\Client\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -2856,16 +2856,16 @@
     <ClInclude Include="PL\PL_ResetManager.h">
       <Filter>MU\Client\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="New_ModelBMD.h">
+    <ClInclude Include="PL\Shader\PL_CullingFace.h">
       <Filter>MU\Client\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="New_RenderBMD.h">
+    <ClInclude Include="PL\Shader\PL_ModelBMD.h">
       <Filter>MU\Client\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MU_OpenGL.h">
+    <ClInclude Include="PL\Shader\PL_OpenGL.h">
       <Filter>MU\Client\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MUCullingFace.h">
+    <ClInclude Include="PL\Shader\PL_RenderBMD.h">
       <Filter>MU\Client\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

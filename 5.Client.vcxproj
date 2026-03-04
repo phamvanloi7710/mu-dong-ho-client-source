@@ -257,12 +257,8 @@
     <ClCompile Include="HealthBar.cpp" />
     <ClCompile Include="ItemTooltip.cpp" />
     <ClCompile Include="MixMgr.cpp" />
-    <ClCompile Include="MUCullingFace.cpp" />
-    <ClCompile Include="MU_OpenGL.cpp" />
     <ClCompile Include="NewUIListGroupButton.cpp" />
     <ClCompile Include="NewUIMixExpansion.cpp" />
-    <ClCompile Include="New_ModelBMD.cpp" />
-    <ClCompile Include="New_RenderBMD.cpp" />
     <ClCompile Include="PL\GameGuardLoader.cpp" />
     <ClCompile Include="PL\PL_Font.cpp" />
     <ClCompile Include="PL\PL_Interface.cpp" />
@@ -272,6 +268,10 @@
     <ClCompile Include="PL\PL_ResetManager.cpp" />
     <ClCompile Include="PL\PL_SystemConfigAndMemberInfo.cpp" />
     <ClCompile Include="PL\PL_RechargeMoney.cpp" />
+    <ClCompile Include="PL\Shader\PL_CullingFace.cpp" />
+    <ClCompile Include="PL\Shader\PL_ModelBMD.cpp" />
+    <ClCompile Include="PL\Shader\PL_OpenGL.cpp" />
+    <ClCompile Include="PL\Shader\PL_RenderBMD.cpp" />
     <ClCompile Include="ProtectSend\cProtectFile.cpp" />
     <ClCompile Include="ProtectSend\SendMessage.cpp" />
     <ClCompile Include="Protocol.cpp" />
@@ -731,12 +731,8 @@
     <ClInclude Include="HealthBar.h" />
     <ClInclude Include="ItemTooltip.h" />
     <ClInclude Include="MixMgr.h" />
-    <ClInclude Include="MUCullingFace.h" />
-    <ClInclude Include="MU_OpenGL.h" />
     <ClInclude Include="NewUIListGroupButton.h" />
     <ClInclude Include="NewUIMixExpansion.h" />
-    <ClInclude Include="New_ModelBMD.h" />
-    <ClInclude Include="New_RenderBMD.h" />
     <ClInclude Include="PL\GameGuardLoader.h" />
     <ClInclude Include="PL\PL_Color.h" />
     <ClInclude Include="PL\PL_Font.h" />
@@ -747,6 +743,10 @@
     <ClInclude Include="PL\PL_ResetManager.h" />
     <ClInclude Include="PL\PL_SystemConfigAndMemberInfo.h" />
     <ClInclude Include="PL\PL_RechargeMoney.h" />
+    <ClInclude Include="PL\Shader\PL_CullingFace.h" />
+    <ClInclude Include="PL\Shader\PL_ModelBMD.h" />
+    <ClInclude Include="PL\Shader\PL_OpenGL.h" />
+    <ClInclude Include="PL\Shader\PL_RenderBMD.h" />
     <ClInclude Include="ProtectSend\cProtectFile.h" />
     <ClInclude Include="ProtectSend\SendMessage.h" />
     <ClInclude Include="Protocol.h" />

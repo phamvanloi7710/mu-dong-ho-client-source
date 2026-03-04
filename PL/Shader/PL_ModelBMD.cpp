@@ -1,15 +1,15 @@
 #include "StdAfx.h"
-#include "New_ModelBMD.h"
+#include "PL/Shader/PL_ModelBMD.h"
 #include <filesystem> // C++17
 #include <iostream>
 #include <sstream>
 #ifdef jdk_shader_local330
 #include "ZzzBMD.h"
 #include "ZzzObject.h"
-#include "New_RenderBMD.h"
+#include "PL/Shader/PL_RenderBMD.h"
 
 #include "Utilities/Log/muConsoleDebug.h"
-#include <MU_OpenGL.h>
+#include "PL/Shader/PL_OpenGL.h"
 
 struct ShaderUniformCache
 {

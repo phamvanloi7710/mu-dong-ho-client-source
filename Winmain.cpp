@@ -76,7 +76,7 @@
 #include "TextClien.h"
 #include "PL/GameGuardLoader.h"
 #include <ProtectSend/cProtectFile.h>
-#include <New_RenderBMD.h>
+#include "PL/Shader/PL_RenderBMD.h"
 
 extern BOOL g_bIMEBlock;
 extern DWORD g_dwTopWindow;

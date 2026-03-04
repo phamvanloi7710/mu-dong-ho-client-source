@@ -4,7 +4,7 @@
 #include "TextureScript.h"
 
 #ifdef jdk_shader_local330
-#include "New_ModelBMD.h"
+#include "PL/Shader/PL_ModelBMD.h"
 #endif
 #include <_types.h>
 

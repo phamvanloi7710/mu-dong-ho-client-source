@@ -1,5 +1,5 @@
 #include "StdAfx.h"
-#include "New_RenderBMD.h"
+#include "PL/Shader/PL_RenderBMD.h"
 
 #ifdef jdk_shader_local330
 #include "ZzzBMD.h"

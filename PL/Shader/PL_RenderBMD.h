@@ -2,7 +2,7 @@
 
 #ifdef jdk_shader_local330
 
-#include "New_ModelBMD.h"
+#include "PL/Shader/PL_ModelBMD.h"
 
 class BMD;
 class CGMNewRenderBMD
