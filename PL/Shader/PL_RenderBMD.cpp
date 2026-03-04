@@ -139,9 +139,12 @@ void CGMShaderBMD::Render(OGL330MODEL::RenderMeshVAO& r)
 	SendUniform(r.m_Shader, r.m_bodyLight, r.m_lightPosition, r.m_meshUV, r.m_setting1, r.m_setting2, r.m_isLight, (r.m_FlagRender & RENDER_SHADOWMAP), r.m_OldBMD->BodyOrigin);
 	rNewMesh.SendIndexBone(r.m_Shader, GMMeshShader->GetfinalBone(), GMMeshShader->GetTransfrom(), r.m_OldBMD->BodyOrigin, r.m_OldBMD->BodyScale, isScale, Scale);
 
-	glBindVertexArray(rNewMesh.VAO);
+	if (s_LastBoundVAO != rNewMesh.VAO)
+	{
+		glBindVertexArray(rNewMesh.VAO);
+		s_LastBoundVAO = rNewMesh.VAO;
+	}
 	glDrawRangeElements(GL_TRIANGLES, 0, rNewMesh.IndexCount - 1, rNewMesh.IndexCount, GL_UNSIGNED_INT, NULL);
-	glBindVertexArray(0);
 
 	//OGL330MODEL::UnUseShader();
 }

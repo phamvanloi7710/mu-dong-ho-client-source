@@ -7,7 +7,6 @@
 #include "PL/Shader/PL_RenderBMD.h"
 
 #include "PL/Shader/EmbeddedShaderVBO.h"
-
 #include "Utilities/Log/muConsoleDebug.h"
 #include "PL/Shader/PL_OpenGL.h"
 
@@ -708,6 +707,8 @@ void CGMMeshShader::FlushAllMesh()
 		g_NewRenderBMD->Render(*iter);
 	}
 
+	glBindVertexArray(0);
+	OGL330MODEL::UnUseShader();
 	m_Data.resize(0);
 }
 

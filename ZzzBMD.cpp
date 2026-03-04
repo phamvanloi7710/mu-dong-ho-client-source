@@ -3529,7 +3529,7 @@ bool _VAOMesh::SendIndexBone(GLuint Shaderid, const float* Bone, bool bTrans, ve
 	if (!Bone) return false;
 	if (BoneContainer.size() > (1024 / 3)) return false;
 
-	// ===== Cache uniform location =====
+	// Cache uniform location
 	static std::unordered_map<GLuint, GLint> s_BoneUniformCache;
 
 	GLint loc;
@@ -3564,12 +3564,44 @@ bool _VAOMesh::SendIndexBone(GLuint Shaderid, const float* Bone, bool bTrans, ve
 	if (AppScale)
 		ResultScale = ReqScale * ResultScale;
 
+	struct BoneUploadState
+	{
+		const _VAOMesh* mesh;
+		const float* bonePtr;
+		bool bTrans;
+		bool appScale;
+		float reqScale;
+		float resultScale;
+		float scalePre;
+		float trans[3];
+	};
+	static std::unordered_map<GLuint, BoneUploadState> s_LastBoneUpload;
+
+	auto itUpload = s_LastBoneUpload.find(Shaderid);
+	if (itUpload != s_LastBoneUpload.end())
+	{
+		const BoneUploadState& st = itUpload->second;
+		if (st.mesh == this &&
+			st.bonePtr == Bone &&
+			st.bTrans == bTrans &&
+			st.appScale == AppScale &&
+			st.reqScale == ReqScale &&
+			st.resultScale == ResultScale &&
+			st.scalePre == ScalePre &&
+			st.trans[0] == vResult[0] &&
+			st.trans[1] == vResult[1] &&
+			st.trans[2] == vResult[2])
+		{
+			return true;
+		}
+	}
+
 	const size_t boneCount = BoneContainer.size();
 	const size_t totalVec4 = boneCount * 3;
 
-	// ===== Tạo buffer tạm =====
-	std::vector<float> buffer;
-	buffer.resize(totalVec4 * 4); // mỗi vec4 có 4 float
+	// Reuse temporary buffer to avoid allocation on every draw call.
+	thread_local std::vector<float> buffer;
+	buffer.resize(totalVec4 * 4);
 
 	for (size_t i = 0; i < boneCount; ++i)
 	{
@@ -3578,22 +3610,29 @@ bool _VAOMesh::SendIndexBone(GLuint Shaderid, const float* Bone, bool bTrans, ve
 		for (int j = 0; j < 3; ++j)
 		{
 			const float* vTarget = Bone + iMatIdx + j * 4;
-
 			size_t base = (i * 3 + j) * 4;
 
 			buffer[base + 0] = vTarget[0] * ResultScale;
 			buffer[base + 1] = vTarget[1] * ResultScale;
 			buffer[base + 2] = vTarget[2] * ResultScale;
-
-			if (AppScale)
-				buffer[base + 3] = vTarget[3] * ScalePre + vResult[j];
-			else
-				buffer[base + 3] = vTarget[3] * ResultScale + vResult[j];
+			buffer[base + 3] = (AppScale ? (vTarget[3] * ScalePre) : (vTarget[3] * ResultScale)) + vResult[j];
 		}
 	}
 
-	// ===== Upload 1 lần duy nhất =====
 	glUniform4fv(loc, (GLsizei)totalVec4, buffer.data());
+
+	BoneUploadState newState;
+	newState.mesh = this;
+	newState.bonePtr = Bone;
+	newState.bTrans = bTrans;
+	newState.appScale = AppScale;
+	newState.reqScale = ReqScale;
+	newState.resultScale = ResultScale;
+	newState.scalePre = ScalePre;
+	newState.trans[0] = vResult[0];
+	newState.trans[1] = vResult[1];
+	newState.trans[2] = vResult[2];
+	s_LastBoneUpload[Shaderid] = newState;
 
 	return true;
 }
