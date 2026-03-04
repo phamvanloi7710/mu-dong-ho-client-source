@@ -3,7 +3,7 @@
 
 #include "TextureScript.h"
 
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 #include "PL/Shader/PL_ModelBMD.h"
 #endif
 #include <_types.h>
@@ -140,7 +140,7 @@ typedef struct _Triangle_t3 : public Triangle_t
 } Triangle_t3;
 
 
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 typedef struct _VertexBMD
 {
 	vec3_t m_vPos;
@@ -293,7 +293,7 @@ public:
 	/*+255*/ bool         m_bCompletedAlloc;
 	/*+256*/ bool         LightMapEnable;
 	/*+256*/ int          unknown;
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 	float        m_fRequestScale;
 	ShaderMesh   New_Meshs;
 #endif
@@ -301,7 +301,7 @@ public:
 	BMD();
 	~BMD();
 
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 	void LoadMeshToVAO();
 	void UploadAllToGPU();
 	void ReadMemoryGPU();

@@ -317,7 +317,7 @@ bool CGMPhysicsManager::physics_work_out(int nType, BMD* pModel, OBJECT* o)
 			pModel->BodyLight[0] = 1.0;
 			pModel->BodyLight[1] = 1.0;
 			pModel->BodyLight[2] = 1.0;
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 			glColor3fv(pModel->BodyLight);
 #endif
 			if (RenderType01 == 1)
@@ -372,7 +372,7 @@ bool CGMPhysicsManager::physics_work_out(int nType, BMD* pModel, OBJECT* o)
 			pModel->BodyLight[0] = 1.0;
 			pModel->BodyLight[1] = 1.0;
 			pModel->BodyLight[2] = 1.0;
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 			glColor3fv(pModel->BodyLight);
 #endif
 			pModel->RenderBody(RENDER_TEXTURE, o->Alpha, o->BlendMesh, o->BlendMeshLight, o->BlendMeshTexCoordU, o->BlendMeshTexCoordV, o->HiddenMesh, -1);

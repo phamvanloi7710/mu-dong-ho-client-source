@@ -2162,7 +2162,7 @@ void SEASON3B::CNewUISystem::RenderItem3DFree(float sx, float sy, float Width, f
 	glPushMatrix();
 	glLoadIdentity();
 	GetOpenGLMatrix(CameraMatrix);
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 	OGL330MODEL::UpdateCameraMatrix();
 #endif
 	EnableDepthTest();

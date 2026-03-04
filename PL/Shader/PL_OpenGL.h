@@ -1,5 +1,5 @@
 #pragma once
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 
 namespace OGL330
 {

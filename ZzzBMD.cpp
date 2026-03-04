@@ -71,7 +71,7 @@ Meshs(NULL), Bones(NULL), Actions(NULL), Textures(NULL), IndexTexture(NULL)
 	m_bCompletedAlloc = false;
 	memset(FileName, 0, sizeof(FileName));
 	unknown = 0;
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 	m_fRequestScale = 0.0f;
 #endif
 }
@@ -174,7 +174,7 @@ void BMD::Release()
 	m_bCompletedAlloc = false;
 #endif // LDS_FIX_SETNULLALLOCVALUE_WHEN_BMDRELEASE
 
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 	if (OGL330::IsShader())
 	{
 		ReadMemoryGPU();
@@ -836,7 +836,7 @@ bool BMD::PlayAnimation(float* AnimationFrame, float* PriorAnimationFrame, unsig
 
 void BMD::Transform(float(*BoneMatrix)[3][4], vec3_t BoundingBoxMin, vec3_t BoundingBoxMax, OBB_t* OBB, bool Translate, float _Scale)
 {
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 	if (NumMeshs == 0)
 	{
 		VectorCopy(BoundingBoxMin, OBB->StartPos);
@@ -1714,7 +1714,7 @@ void BMD::RenderMeshEffect(int i, int iType, int iSubType, vec3_t Angle, VOID* o
 
 void BMD::RenderMesh(int i, int RenderFlag, float Alpha, int BlendMesh, float BlendMeshLight, float BlendMeshTexCoordU, float BlendMeshTexCoordV, int MeshTexture)
 {
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 	if (OGL330::IsShader())
 	{
 		if (i >= 0 && i < NumMeshs)
@@ -2230,7 +2230,7 @@ void BMD::RenderMesh(int i, int RenderFlag, float Alpha, int BlendMesh, float Bl
 						if (targetIndex != 0)
 						{
 
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 							OGL330::SwitchStatePipeline();
 #endif
 							glEnableClientState(GL_VERTEX_ARRAY);
@@ -2263,7 +2263,7 @@ void BMD::RenderBody(int Flag, float Alpha, int BlendMesh, float BlendMeshLight,
 		this->BeginRender(Alpha);
 
 
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 		if (!LightEnable)
 		{
 			if (Alpha < 0.99)
@@ -2271,7 +2271,7 @@ void BMD::RenderBody(int Flag, float Alpha, int BlendMesh, float BlendMeshLight,
 			else
 				glColor3fv(BodyLight);
 		}
-#endif // jdk_shader_local330
+#endif // USING_SHADER_330
 
 		for (int i = 0; i < NumMeshs; i++)
 		{
@@ -2294,32 +2294,32 @@ void BMD::RenderBody(int Flag, float Alpha, int BlendMesh, float BlendMeshLight,
 					{
 						DisableAlphaBlend();
 
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 						if (Alpha < 0.99)
 							glColor4f(0.f, 0.f, 0.f, Alpha);
 						else
 							glColor3f(0.f, 0.f, 0.f);
-#endif // jdk_shader_local330
+#endif // USING_SHADER_330
 
 						this->RenderMesh(i, RENDER_COLOR | RENDER_SHADOWMAP, Alpha, iBlendMesh, BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV);
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 						glColor3f(1.f, 1.f, 1.f);
-#endif // jdk_shader_local330
+#endif // USING_SHADER_330
 					}
 					else if (shadowType == SHADOW_RENDER_TEXTURE)
 					{
 						DisableAlphaBlend();
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 						if (Alpha < 0.99)
 							glColor4f(0.f, 0.f, 0.f, Alpha);
 						else
 							glColor3f(0.f, 0.f, 0.f);
-#endif // jdk_shader_local330
+#endif // USING_SHADER_330
 
 						this->RenderMesh(i, RENDER_TEXTURE | RENDER_SHADOWMAP, Alpha, iBlendMesh, BlendMeshLight, BlendMeshTexCoordU, BlendMeshTexCoordV);
-#ifndef jdk_shader_local330
+#ifndef USING_SHADER_330
 						glColor3f(1.f, 1.f, 1.f);
-#endif // jdk_shader_local330
+#endif // USING_SHADER_330
 					}
 				}
 			}
@@ -2639,7 +2639,7 @@ void BMD::AddClothesShadowTriangles(void* pClothes, const int clothesCount, cons
 		return;
 	}
 
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 	OGL330::SwitchStatePipeline();
 #endif
 	glEnableClientState(GL_VERTEX_ARRAY);
@@ -2686,7 +2686,7 @@ void BMD::AddMeshShadowTriangles(const int blendMesh, const int hiddenMesh, cons
 		return;
 	}
 
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 	OGL330::SwitchStatePipeline();
 #endif
 	glEnableClientState(GL_VERTEX_ARRAY);
@@ -2701,7 +2701,7 @@ void BMD::RenderBodyShadow(int BlendMesh, int HiddenMesh, int StartMeshNumber, i
 	if (NumMeshs == 0)
 		return;
 
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 	DisableTexture();
 	DisableDepthMask();
 	BeginRender(1.f);
@@ -3240,7 +3240,7 @@ bool BMD::IsTextureHide(int index)
 }
 
 
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 void BMD::LoadMeshToVAO()
 {
 	int i, j = 0;

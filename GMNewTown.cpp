@@ -790,7 +790,7 @@ bool GMNewTown::RenderObject(OBJECT* pObject, BMD* pModel, bool ExtraMon)
 	if (!IsCurrentMap())
 		return false;
 
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 	rRenderLayOut uniform(pObject);
 #endif
 	if (IsNewMap73_74())

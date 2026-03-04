@@ -676,7 +676,7 @@ void RenderInfomation3D()
 		glPushMatrix();
 		glLoadIdentity();
 		GetOpenGLMatrix(CameraMatrix);
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 		OGL330MODEL::UpdateCameraMatrix();
 #endif
 		EnableDepthTest();
@@ -1259,7 +1259,7 @@ bool NewRenderCharacterScene(HDC hDC)
 		glClearColor(0.f, 0.f, 0.f, 1.f);
 		BeginOpengl(0, 0, 640, 480);
 		CreateScreenVector(MouseX, MouseY, MouseTarget, true);
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 		if (OGL330::IsShader() && GMMeshShader->Enabled())
 			GMMeshShader->SetHighLight(HighLight);
 #endif
@@ -1363,7 +1363,7 @@ bool NewRenderCharacterScene(HDC hDC)
 		CreateScreenVector(MouseX, MouseY, MouseTarget);
 		//gCullingFace.Frustum3DPlanes(CameraPosition);
 
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 		if (OGL330::IsShader() && GMMeshShader->Enabled())
 			GMMeshShader->SetHighLight(HighLight);
 #endif
@@ -1734,7 +1734,7 @@ bool NewRenderLogInScene(HDC hDC)
 	{
 		glClearColor(0.f, 0.f, 0.f, 1.f);
 		BeginOpengl(0, 80, 640, 320);
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 		if (OGL330::IsShader() && GMMeshShader->Enabled())
 			GMMeshShader->SetHighLight(HighLight);
 #endif
@@ -1796,7 +1796,7 @@ bool NewRenderLogInScene(HDC hDC)
 		glClearColor(0.f, 0.f, 0.f, 1.f);
 		BeginOpengl(0, 25, 640, 430);
 		CreateFrustrum(Width, pos);
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 		if (OGL330::IsShader() && GMMeshShader->Enabled())
 			GMMeshShader->SetHighLight(HighLight);
 #endif
@@ -2652,7 +2652,7 @@ bool RenderMainScene()
 	gCullingFace.Frustum3DPlanes(CameraPosition);
 
 
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 	if (OGL330::IsShader() && GMMeshShader->Enabled())
 		GMMeshShader->SetHighLight(HighLight);
 #endif

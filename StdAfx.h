@@ -118,6 +118,6 @@ typedef unsigned __int64 QWORD;
 #include "CGMProtect.h"
 #include "CBInterface.h"
 
-#ifdef jdk_shader_local330
+#ifdef USING_SHADER_330
 #include "PL/Shader/PL_OpenGL.h"
 #endif
