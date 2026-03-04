@@ -2031,6 +2031,8 @@ void CreateEffect(OBJECT* o, int Type, vec3_t Position, vec3_t Angle, vec3_t Lig
 			o->LifeTime = 1;
 			o->BlendMesh = 0;
 			o->BlendMeshLight = o->Light[0];
+			// Shader path uses object light color directly, so keep this laser branch black.
+			Vector(0.f, 0.f, 0.f, o->Light);
 			o->Scale = 1.3f;
 			o->RenderType = RENDER_DARK;
 		}
@@ -20048,4 +20050,3 @@ void CreateMyGensInfluenceGroundEffect()
 		CreateEffect(BITMAP_OUR_INFLUENCE_GROUND, Hero->Object.Position, vTemp, vTemp, 0, &Hero->Object);
 	}
 }
-
